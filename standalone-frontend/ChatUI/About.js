@@ -1,10 +1,16 @@
-function typewriter(){
-    const text="I'm FINN-AI"
-    let index=0
-    while(index<=text.length){
-        document.getElementById("typewriter").innerHTML+=text.charAt(index)
-        index++
-        setTimeout(typewriter,100)
+function typewriter() {
+    const text = "I'm FINN-AI";
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            document.getElementById("typewriter").innerHTML += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        }
     }
+
+    type();
 }
-typewriter()
+
+typewriter();
