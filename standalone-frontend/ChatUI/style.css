@@ -281,7 +281,7 @@ button:hover{
 .input {
   background-color: #010201;
   border: none;
-  width: 301px;
+  width: 750px;
   height: 56px;
   border-radius: 10px;
   color: white;
@@ -294,7 +294,12 @@ button:hover{
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 100%; 
+  max-width: 300px; 
+  margin: 0 auto; 
 }
+
+
 
 .input::placeholder {
   color: #c0b9c0;
@@ -638,5 +643,52 @@ button:hover{
   .input-text p, .reply-text p {
       max-width: 90%;
       font-size: 14px;
+  }
+}
+
+
+
+@media (min-width: 768px) {
+  #poda {
+    max-width: 500px; 
+  }
+
+  .input {
+    max-width: 500px; 
+  }
+
+  .white,
+  .border,
+  .darkBorderBg,
+  .glow {
+    max-width: 514px;
+  }
+
+  .white {
+    max-width: 507px;
+  }
+
+  .border {
+    max-width: 503px;
+  }
+
+  .darkBorderBg {
+    max-width: 512px;
+  }
+
+  .glow {
+    max-width: 554px;
+  }
+}
+
+@media (max-width: 767px) {
+  .input {
+    font-size: 16px;
+    height: 50px;
+    max-width: 300px; 
+  }
+
+  #poda {
+    max-width: 300px; 
   }
 }
