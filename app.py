@@ -6,6 +6,24 @@ from model import NeuralNet
 from nltk_utils import bag_of_words, tokenize
 import numpy as np
 import random
+from gtts import gTTS
+import pygame
+import io
+
+def speak(text):
+    # Initialize pygame mixer
+    pygame.mixer.init()
+    
+    tts = gTTS(text, lang='en', tld='com')
+    fp = io.BytesIO()
+    tts.write_to_fp(fp)
+    fp.seek(0)
+
+    # Load the speech into pygame
+    pygame.mixer.music.load(fp, 'mp3')
+    pygame.mixer.music.play()
+
+
 
 app = Flask(__name__)
 CORS(app)
@@ -46,8 +64,11 @@ def predict():
     if prob.item() > 0.75:
         for intent in intents['intents']:
             if tag == intent["tag"]:
-                return jsonify({"message": random.choice(intent['responses'])})
-
+                response=random.choice(intent['responses'])
+                speak(response)
+                return jsonify({"message": response})
+            
+    speak("I do not understand")
     return jsonify({"message": "I do not understand..."})
 
 if __name__ == "__main__":

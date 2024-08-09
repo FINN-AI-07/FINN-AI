@@ -83,7 +83,7 @@ function removeLoader(loaderElement) {
 
 async function generateReply(message) {
     try {
-        const response = await fetch('https://finn-ai-version-1-0.onrender.com/predict', {
+        const response = await fetch('http://127.0.0.1:5000/predict', {
             method: 'POST',
             body: JSON.stringify({ message: message }),
             mode: 'cors',
