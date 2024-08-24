@@ -27,6 +27,37 @@ function addMessage(content,isUser=false){
 
 
 }
+
+
+    
+       
+
+        
+    
+    
+document.addEventListener('DOMContentLoaded', () => {
+    const suggestions = document.querySelectorAll('.suggestion');
+    const userInput = document.getElementById('user-input');
+
+    suggestions.forEach(button => {
+        button.addEventListener('click', async () => {
+            const question = button.getAttribute('data-question');
+
+            addMessage(question, true);
+
+            const loader = addLoader();
+            try {
+                const reply = await generateReply(question);
+                removeLoader(loader);
+                addMessage(reply);
+            } catch (e) {
+                removeLoader(loader);
+                addMessage("Sorry, I couldn't generate a reply.");
+            }
+        });
+    });
+});
+
 function typeText(element, text) {
     let index = 0;
     element.innerHTML = '';

@@ -20,7 +20,15 @@ body {
 }
 
 
-
+.suggestion{
+font-size: medium;
+padding: 10px;
+background-color: inherit;
+color: rgb(203, 203, 203);
+margin-top: 10px;
+border-radius: 25px;
+border-color: #402fb5;
+}
 .body {
   position: relative;
   display: flex;
